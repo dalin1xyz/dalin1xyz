@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="ru">g
+<html lang="ru">
 <head>
+ <meta charset="UTF-SIZE">
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>dalin1xyz | Ссылки</title>
@@ -13,11 +14,13 @@
  }
 
  body {
- /* Осветленный мрачный фон */
- background-color: #1a1a1a;
+ / Цвет тумана: мягкий серо-графитовый /
+ background-color: #3a3a3a;
+ / Радиальный градиент для эффекта глубины тумана (светлее в центре) /
+ background: radial-gradient(circle, #4a4a4a 0%, #2a2a2a 100%);
  color: #ffffff;
  display: flex;
- flex-direction: column;
+ flexint-direction: column;
  align-items: center;
  justify-content: center;
  min-height: 100vh;
@@ -26,7 +29,7 @@
  position: relative;
  }
 
- /* Слой с цитатами на весь экран */
+ / Слой с бесконечными цитатами /
  .background-quotes {
  position: absolute;
  top: 0;
@@ -36,60 +39,61 @@
  z-index: 0;
  overflow: hidden;
  pointer-events: none;
- opacity: 0.25; /* Сделал чуть заметнее, чтобы текст был виден на светлом фоне */
+ opacity: 0.3; / Чуть выше прозрачность для читаемости на светлом фоне /
  }
 
  .quote-layer {
  position: absolute;
- width: 300%; /* Увеличил ширину для плавности */
- height: 300%;
+ width: 400%;
+ height: 400%;
  font-size: 16px;
- line-height: 1.5;
- color: #888;
+ line-height: 1.8;
+ color: #bbb; / Сделал текст чуть темнее, чтобы он «вплавлялся» в туман /
  user-select: none;
- animation: floatQuotes 80s linear infinite;
- padding: 20px;
+ animation: floatQuotes 100s linear infinite;
+ padding: 50px;
+ text-align: left;
  }
 
  @keyframes floatQuotes {
- from { transform: translate(0, 0); }
- to { transform: translate(-33%, -33%); }
+ 0% { transform: translate(0, 0); }
+ 100% { transform: translate(-25%, -25%); }
  }
 
- /* Контейнер без фона (без черного квадрата) */
  .container {
  width: 100%;
  max-width: 480px;
  text-align: center;
  z-index: 2;
- /* Убрали фон и размытие плашки */
  }
 
  .avatar {
  width: 96px;
  height: 96px;
  border-radius: 50%;
- background: linear-gradient(45deg, #222, #000);
+ / Аватар в стиле тумана /
+ background: linear-gradient(45deg, #555, #222);
  margin: 0 auto 20px;
  display: flex;
  align-items: center;
  justify-content: center;
  font-size: 32px;
  font-weight: bold;
- border: 1px solid rgba(255, 255, 255, 0.1);
- box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+ border: 1px solid rgba(255, 255, 255, 0.2);
+ box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
  }
 
  h1 {
  font-size: 22px;
  margin-bottom: 8px;
  letter-spacing: 1px;
- color: #eee;
+ color: #fff;
+ text-shadow: 0 2px 10px rgba(0,0,0,0.2);
  }
 
  .description {
  font-size: 14px;
- color: #999;
+ color: #ddd;
  margin-bottom: 32px;
  line-height: 1.5;
  }
@@ -102,30 +106,31 @@
 
  .link-card {
  display: block;
- /* Максимальная прозрачность */
- background: rgba(255, 255, 255, 0.03);
- backdrop-filter: blur(5px);
- -webkit-backdrop-filter: blur(5px);
- color: #bbb;
+ / Карточки теперь с легким белым свечением, как в тумане /
+ background: rgba(255, 255, 255, 0.08);
+ backdrop-filter: blur(8px);
+ -webkit-backdrop-filter: blur(8px);
+ color: #eee;
  text-decoration: none;
  padding: 18px;
  border-radius: 14px;
  font-size: 15px;
  font-weight: 500;
  transition: all 0.4s ease;
- border: 1px solid rgba(255, 255, 255, 0.05);
+ border: 1px solid rgba(255, 255, 255, 0.15);
  }
 
  .link-card:hover {
- background: rgba(255, 255, 255, 0.1);
+ background: rgba(255, 255, 255, 0.15);
  color: #fff;
  transform: translateY(-3px);
- border-color: rgba(255, 255, 255, 0.2);
+ border-color: rgba(255, 255, 255, 0.3);
+ box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
  }
 
- .instagram:hover { box-shadow: 0 10px 20px rgba(225, 48, 108, 0.1); }
- .tiktok:hover { box-shadow: 0 10px 20px rgba(0, 242, 254, 0.1); }
- .threads:hover { box-shadow: 0 10px 20px rgba(255, 255, 255, 0.05); }
+ .instagram:hover { box-shadow: 0 10px 20px rgba(225, 48, 108, 0.15); }
+ .tiktok:hover { box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15); }
+ .threads:hover { box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
 
  </style>
 </head>
@@ -133,4 +138,4 @@
 
  <div class="background-quotes">
  <div class="quote-layer">
- Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поиска/истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот 
+ Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... В
