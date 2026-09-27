@@ -1,259 +1,159 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>dalin1xyz | Мой сайт визитка</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@dalin1xyz</title>
+    <style>
+        /* Общие стили страницы */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #0d1117; /* Темный фон */
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
 
-    body {
-      /* Лесное туманное свечение */
-      background-color: #040907;
-      background-image: 
-        radial-gradient(circle at 50% 25%, #1d4233 0%, #0d1f18 50%, #040907 100%),
-        linear-gradient(180deg, rgba(4, 9, 7, 0.2) 0%, #040907 85%);
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
-      overflow: hidden;
-      position: relative;
-      /* Отключаем стандартный курсор на компьютерах */
-      cursor: none;
-    }
+        /* Задний фон с повторяющимся тусклым текстом */
+        .background-noise {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            color: rgba(255, 255, 255, 0.03); /* Очень тусклый текст */
+            font-size: 14px;
+            line-height: 1.8;
+            word-wrap: break-word;
+            pointer-events: none; /* Чтобы текст не мешал кликам */
+            user-select: none;
+            text-align: justify;
+            z-index: 1;
+        }
 
-    /* Изумрудная туманная дымка у основания */
-    body::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 50vh;
-      background: linear-gradient(to top, #040907 15%, rgba(29, 66, 51, 0.35) 65%, transparent 100%);
-      opacity: 0.95;
-      z-index: 1;
-      pointer-events: none;
-    }
+        /* Основной контейнер с контентом */
+        .container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 600px;
+            padding: 40px 20px;
+            text-align: center;
+            box-sizing: border-box;
+        }
 
-    /* Стили для кастомного курсора */
-    .custom-cursor {
-      width: 8px;
-      height: 8px;
-      background-color: #00e676;
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none; /* Пропускает клики сквозь себя */
-      z-index: 9999;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
-      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
-    }
+        /* Аватарка */
+        .profile-pic-container {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px;
+        }
 
-    /* Внешнее кольцо шлейфа курсора */
-    .custom-cursor-follower {
-      width: 24px;
-      height: 24px;
-      border: 1px solid rgba(0, 230, 118, 0.4);
-      border-radius: 50%;
-      position: fixed;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 9998;
-      /* Эффект плавного преследования */
-      transition: transform 0.08s cubic-bezier(0.25, 1, 0.5, 1), width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
-    }
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
 
-    /* Изменение курсора при наведении на ссылки */
-    body.hovered .custom-cursor {
-      width: 12px;
-      height: 12px;
-      background-color: #ffffff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 1);
-    }
-    body.hovered .custom-cursor-follower {
-      width: 36px;
-      height: 36px;
-      border-color: rgba(255, 255, 255, 0.8);
-      background-color: rgba(255, 255, 255, 0.05);
-    }
+        /* Зеленый онлайн-индикатор */
+        .status-dot {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 14px;
+            height: 14px;
+            background-color: #23a55a;
+            border-radius: 50%;
+            border: 2px solid #0d1117;
+        }
 
-    /* Контейнер для фонового текста */
-    .background-quotes {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      overflow: hidden;
-      pointer-events: none;
-      opacity: 0.16;
-      user-select: none;
-    }
+        /* Никнейм */
+        .username {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
 
-    /* Стабильный блок бесконечного движения */
-    .scroll-container {
-      display: block;
-      width: 100%;
-      height: 200vh;
-      position: absolute;
-      top: 0;
-      left: 0;
-      animation: loopScroll 40s linear infinite;
-    }
+        /* Текстовое описание */
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
 
-    /* Сплошная монолитная стена текста */
-    .text-wall {
-      display: block;
-      height: 100vh;
-      padding: 20px;
-      font-size: 14px;
-      line-height: 1.45;
-      color: #8fa399;
-      word-break: break-word;
-      text-align: justify;
-    }
+        /* Контейнер для кнопок-ссылок */
+        .links-box {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
 
-    @keyframes loopScroll {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-100vh); }
-    }
+        /* Стили кнопок */
+        .link-btn {
+            display: block;
+            background-color: #161b22; /* Темно-серый цвет плашек */
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-    /* Основной контейнер поверх всего */
-    .container {
-      width: 100%;
-      max-width: 480px;
-      text-align: center;
-      z-index: 2;
-      padding: 20px;
-    }
+        /* Эффект при наведении */
+        .link-btn:hover {
+            background-color: #21262d;
+            transform: translateY(-2px);
+        }
 
-    /* Стили для круглой аватарки-картинки */
-    .avatar-wrapper {
-      width: 96px;
-      height: 96px;
-      margin: 0 auto 20px;
-      position: relative;
-    }
-
-    .avatar {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      display: block;
-      object-fit: cover;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-    }
-
-    /* Индикатор статуса "В сети" как в Telegram */
-    .status-dot {
-      position: absolute;
-      bottom: -1px;
-      right: -1px;
-      width: 22px;
-      height: 22px;
-      background-color: #00e676;
-      border-radius: 50%;
-      border: 3.5px solid #040907;
-      z-index: 3;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin-bottom: 12px;
-      letter-spacing: 1px;
-      color: #f0f0f0;
-    }
-
-    /* Описание */
-    .description {
-      font-size: 14px;
-      color: #8da096;
-      margin-bottom: 32px;
-      line-height: 1.6;
-      text-align: center;
-    }
-
-    .description p {
-      margin-bottom: 10px;
-    }
-    
-    .description p:last-child {
-      margin-bottom: 0;
-    }
-
-    .links-container {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    /* Кнопки-ссылки в закругленных прямоугольниках с прозрачностью */
-    .link-card {
-      display: block;
-      background: rgba(255, 255, 255, 0.025);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      color: #bbb;
-      text-decoration: none;
-      padding: 18px;
-      border-radius: 14px;
-      font-size: 15px;
-      font-weight: 500;
-      transition: all 0.4s ease;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      cursor: none;
-    }
-
-    .link-card:hover {
-      background: rgba(255, 255, 255, 0.07);
-      color: #fff;
-      transform: translateY(-3px);
-      border-color: rgba(255, 255, 255, 0.18);
-    }
-
-    /* Подсветка при наведении */
-    .instagram:hover { box-shadow: 0 10px 20px rgba(225, 48, 108, 0.12); }
-    .tiktok:hover { box-shadow: 0 10px 20px rgba(0, 242, 254, 0.12); }
-    .threads:hover { box-shadow: 0 10px 20px rgba(255, 255, 255, 0.04); }
-
-    /* Отключаем кастомный курсор на мобильных тач-скринах */
-    @media (hover: none) and (pointer: coarse) {
-      .custom-cursor, .custom-cursor-follower {
-        display: none !important;
-      }
-      body, .link-card {
-        cursor: auto !important;
-      }
-    }
-  </style>
+        /* Эффект при нажатии */
+        .link-btn:active {
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
 
-  <!-- Элементы кастомного курсора -->
-  <div class="custom-cursor" id="cursor"></div>
-  <div class="custom-cursor-follower" id="follower"></div>
+    <div class="background-noise">
+        Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Все проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Безумие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Все проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Безумие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код...
+    </div>
 
-  <!-- Бесконечный фоновый текст -->
-  <div class="background-quotes">
-    <div class="scroll-container">
-      <!-- ЭКРАН 1 -->
-      <div class="text-wall">
-        Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код...
-      </div>
-      <!-- ЭКРАН 2 -->
-      <div class="text-wall">
+    <div class="container">
+        <div class="profile-pic-container">
+            <img src="avatar.jpg" alt="@dalin1xyz" class="profile-pic">
+            <div class="status-dot"></div>
+        </div>
+
+        <div class="username">@dalin1xyz</div>
+
+        <div class="description">
+            В мире, полном шума, я выбираю тишину и смыслы. Здесь нет лишних слов, только отражение того, что я создаю.<br><br>
+            Я верю, что aesthetic — это не только то, что мы видим, но и то, что мы чувствуем. Исследую границы цифрового пространства, фиксируя моменты, которые обычно ускользают.<br><br>
+            Добро пожаловать в мой фрагмент реальности.
+        </div>
+
+        <div class="links-box">
+            <a href="#" target="_blank" class="link-btn">Threads</a>
+            <a href="#" target="_blank" class="link-btn">Instagram</a>
+            <a href="#" target="_blank" class="link-btn">TikTok</a>
+        </div>
+    </div>
+
+</body>
+</html>
