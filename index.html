@@ -13,11 +13,11 @@
     }
 
     body {
-      /* Глубокий лесной туман на чистом CSS без опасных режимов смешивания */
-      background-color: #030504;
+      /* Сделали лесное туманное свечение намного ярче, чтобы оно не сливалось в черный цвет */
+      background-color: #040907;
       background-image: 
-        radial-gradient(circle at 50% 30%, rgba(24, 43, 35, 0.6) 0%, rgba(10, 18, 14, 0.9) 60%, #030504 100%),
-        linear-gradient(180deg, rgba(3, 5, 4, 0.4) 0%, #030504 90%);
+        radial-gradient(circle at 50% 25%, #1d4233 0%, #0d1f18 50%, #040907 100%),
+        linear-gradient(180deg, rgba(4, 9, 7, 0.2) 0%, #040907 85%);
       color: #ffffff;
       display: flex;
       flex-direction: column;
@@ -29,16 +29,16 @@
       position: relative;
     }
 
-    /* Наложение дополнительной туманной дымки снизу экрана */
+    /* Яркая изумрудная туманная дымка у основания */
     body::before {
       content: "";
       position: absolute;
       bottom: 0;
       left: 0;
       width: 100%;
-      height: 40vh;
-      background: linear-gradient(to top, #030504 10%, rgba(14, 26, 21, 0.4) 60%, transparent 100%);
-      opacity: 0.9;
+      height: 50vh;
+      background: linear-gradient(to top, #040907 15%, rgba(29, 66, 51, 0.35) 65%, transparent 100%);
+      opacity: 0.95;
       z-index: 1;
       pointer-events: none;
     }
@@ -53,7 +53,7 @@
       z-index: 0;
       overflow: hidden;
       pointer-events: none;
-      opacity: 0.13; /* Мягкая тусклость, чтобы буквы не резали глаза */
+      opacity: 0.16; /* Чуть-чуть прибавили видимости тексту */
       user-select: none;
     }
 
@@ -71,11 +71,11 @@
     /* Сплошная монолитная стена текста */
     .text-wall {
       display: block;
-      height: 100vh; /* Ровно один экран */
+      height: 100vh;
       padding: 20px;
       font-size: 14px;
       line-height: 1.45;
-      color: #6d7d75; /* Приглушенный лесной цвет для движущихся букв */
+      color: #8fa399; /* Сделали буквы светлее, чтобы они красиво гармонировали с новым фоном */
       word-break: break-word;
       text-align: justify;
     }
@@ -117,10 +117,10 @@
       color: #f0f0f0;
     }
 
-    /* Многострочное описание */
+    /* Описание */
     .description {
       font-size: 14px;
-      color: #6c7571;
+      color: #8da096; /* Сделали текст биографии чуть более читаемым */
       margin-bottom: 32px;
       line-height: 1.6;
       text-align: center;
@@ -201,9 +201,9 @@
     </div>
 
     <div class="links-container">
-      <a href="https://threads.com/dalin1xyz" target="_blank" class="link-card threads">Threads</a>
-      <a href="https://instagram.com/@dalin1xyz" target="_blank" class="link-card instagram">Instagram</a>
-      <a href="https://tiktok.com/dalin1xyz" target="_blank" class="link-card tiktok">TikTok</a>
+      <a href="https://threads.com" target="_blank" class="link-card threads">Threads</a>
+      <a href="https://instagram.com" target="_blank" class="link-card instagram">Instagram</a>
+      <a href="https://tiktok.com" target="_blank" class="link-card tiktok">TikTok</a>
     </div>
   </div>
 
