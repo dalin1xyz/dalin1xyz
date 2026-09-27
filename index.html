@@ -113,17 +113,17 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
-    /* Зеленый кружок статуса "В сети" */
+    /* Точная копия статуса "В сети" как в Telegram/Discord */
     .status-dot {
       position: absolute;
-      bottom: 4px;
-      right: 4px;
-      width: 16px;
-      height: 16px;
-      background-color: #2ecc71; /* Сочный зеленый цвет */
+      bottom: -1px;
+      right: -1px;
+      width: 22px; /* Увеличили размер кружка */
+      height: 22px;
+      background-color: #00e676; /* Яркий неоново-зеленый цвет как на вашем фото */
       border-radius: 50%;
-      border: 2px solid #040907; /* Темный контур, чтобы точка выделялась на фоне фото */
-      box-shadow: 0 0 12px rgba(46, 204, 113, 0.7); /* Мягкое неоновое свечение */
+      border: 3.5px solid #040907; /* Толстая темная обводка под цвет вашего фона */
+      box-shadow: none; /* Убрали лишнее размытие для четких краев */
       z-index: 3;
     }
 
@@ -203,7 +203,7 @@
   <!-- Контент страницы -->
   <div class="container">
     
-    <!-- Аватарка вместе со светящимся кружком статуса -->
+    <!-- Аватарка вместе со статусом -->
     <div class="avatar-wrapper">
       <img src="avatar.jpg" onerror="this.onerror=null; this.src='avatar.png'; this.setAttribute('onerror', 'this.onerror=null; this.src=\'avatar.PNG\'');" alt="Avatar" class="avatar">
       <div class="status-dot"></div>
@@ -218,9 +218,9 @@
     </div>
 
     <div class="links-container">
-      <a href="https://threads.com" target="_blank" class="link-card threads">Threads</a>
-      <a href="https://instagram.com" target="_blank" class="link-card instagram">Instagram</a>
-      <a href="https://tiktok.com" target="_blank" class="link-card tiktok">TikTok</a>
+      <a href="https://threads.com/@dalin1xyz" target="_blank" class="link-card threads">Threads</a>
+      <a href="https://instagram.com/@dalin1xyz" target="_blank" class="link-card instagram">Instagram</a>
+      <a href="https://tiktok.com/@dalin1xyz" target="_blank" class="link-card tiktok">TikTok</a>
     </div>
   </div>
 
