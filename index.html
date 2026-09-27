@@ -30,7 +30,7 @@
       padding: 20px;
       overflow: hidden;
       position: relative;
-      /* Отключаем стандартный курсор на компьютерах */
+      /* Скрываем дефолтную стрелку мыши на ПК */
       cursor: none;
     }
 
@@ -48,46 +48,47 @@
       pointer-events: none;
     }
 
-    /* Стили для кастомного курсора */
+    /* ЭСТЕТИЧНЫЙ КАСТОМНЫЙ КУРСОР */
     .custom-cursor {
-      width: 8px;
-      height: 8px;
+      width: 6px;
+      height: 6px;
       background-color: #00e676;
       border-radius: 50%;
       position: fixed;
       transform: translate(-50%, -50%);
-      pointer-events: none; /* Пропускает клики сквозь себя */
+      pointer-events: none;
       z-index: 9999;
-      box-shadow: 0 0 10px rgba(0, 230, 118, 0.8);
-      transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+      box-shadow: 0 0 12px #00e676, 0 0 20px rgba(0, 230, 118, 0.5);
+      transition: width 0.25s ease, height 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
     }
 
-    /* Внешнее кольцо шлейфа курсора */
+    /* Внешняя размытая аура курсора */
     .custom-cursor-follower {
-      width: 24px;
-      height: 24px;
-      border: 1px solid rgba(0, 230, 118, 0.4);
+      width: 26px;
+      height: 26px;
+      border: 1px solid rgba(0, 230, 118, 0.35);
+      background-color: rgba(0, 230, 118, 0.02);
       border-radius: 50%;
       position: fixed;
       transform: translate(-50%, -50%);
       pointer-events: none;
       z-index: 9998;
-      /* Эффект плавного преследования */
-      transition: transform 0.08s cubic-bezier(0.25, 1, 0.5, 1), width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
+      /* Эффект плавного органического следования */
+      transition: transform 0.12s cubic-bezier(0.215, 0.610, 0.355, 1), width 0.25s ease, height 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
     }
 
-    /* Изменение курсора при наведении на ссылки */
+    /* Эффект при наведении на интерактивные элементы */
     body.hovered .custom-cursor {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       background-color: #ffffff;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 1);
+      box-shadow: 0 0 15px #ffffff, 0 0 25px rgba(255, 255, 255, 0.6);
     }
     body.hovered .custom-cursor-follower {
-      width: 36px;
-      height: 36px;
-      border-color: rgba(255, 255, 255, 0.8);
-      background-color: rgba(255, 255, 255, 0.05);
+      width: 42px;
+      height: 42px;
+      border-color: rgba(255, 255, 255, 0.7);
+      background-color: rgba(255, 255, 255, 0.06);
     }
 
     /* Контейнер для фонового текста */
@@ -157,6 +158,7 @@
       object-fit: cover;
       border: 1px solid rgba(255, 255, 255, 0.15);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      cursor: none;
     }
 
     /* Индикатор статуса "В сети" как в Telegram */
@@ -236,7 +238,7 @@
       .custom-cursor, .custom-cursor-follower {
         display: none !important;
       }
-      body, .link-card {
+      body, .link-card, .avatar {
         cursor: auto !important;
       }
     }
