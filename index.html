@@ -13,7 +13,7 @@
     }
 
     body {
-      /* Сделали лесное туманное свечение намного ярче, чтобы оно не сливалось в черный цвет */
+      /* Лесное туманное свечение */
       background-color: #040907;
       background-image: 
         radial-gradient(circle at 50% 25%, #1d4233 0%, #0d1f18 50%, #040907 100%),
@@ -29,7 +29,7 @@
       position: relative;
     }
 
-    /* Яркая изумрудная туманная дымка у основания */
+    /* Изумрудная туманная дымка у основания */
     body::before {
       content: "";
       position: absolute;
@@ -53,7 +53,7 @@
       z-index: 0;
       overflow: hidden;
       pointer-events: none;
-      opacity: 0.16; /* Чуть-чуть прибавили видимости тексту */
+      opacity: 0.16;
       user-select: none;
     }
 
@@ -75,7 +75,7 @@
       padding: 20px;
       font-size: 14px;
       line-height: 1.45;
-      color: #8fa399; /* Сделали буквы светлее, чтобы они красиво гармонировали с новым фоном */
+      color: #8fa399;
       word-break: break-word;
       text-align: justify;
     }
@@ -120,7 +120,7 @@
     /* Описание */
     .description {
       font-size: 14px;
-      color: #8da096; /* Сделали текст биографии чуть более читаемым */
+      color: #8da096;
       margin-bottom: 32px;
       line-height: 1.6;
       text-align: center;
@@ -201,7 +201,8 @@
     </div>
 
     <div class="links-container">
-      <a href="https://threads.com" target="_blank" class="link-card threads">Threads</a>
+      <!-- Первая кнопка теперь изменена на вашу именную визитку Bitly -->
+      <a href="https://bit.ly" target="_blank" class="link-card threads">Мой сайт визитка</a>
       <a href="https://instagram.com" target="_blank" class="link-card instagram">Instagram</a>
       <a href="https://tiktok.com" target="_blank" class="link-card tiktok">TikTok</a>
     </div>
