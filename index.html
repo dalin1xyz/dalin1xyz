@@ -46,7 +46,6 @@
         .ticker-content {
             display: flex;
             flex-direction: column;
-            /* 60s — это скорость (длительность круга). Сделайте меньше, если надо быстрее */
             animation: scrollUpInfinite 60s linear infinite; 
         }
 
@@ -91,16 +90,31 @@
             border: 2px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* ИНДИКАТОР "В СЕТИ": Крупнее, ближе к центру и с анимацией */
         .status-dot {
             position: absolute;
-            bottom: 4px;
-            right: 4px;
-            width: 14px;
-            height: 14px;
+            bottom: 8px; /* Сдвинули глубже внутрь аватарки */
+            right: 8px;  /* Сдвинули глубже внутрь аватарки */
+            width: 18px; /* Увеличили размер */
+            height: 18px;/* Увеличили размер */
             background-color: #00ff66;
             border-radius: 50%;
-            border: 2.5px solid #0a0e0c;
-            box-shadow: 0 0 10px #00ff66;
+            border: 3px solid #0a0e0c; /* Плотная темная обводка */
+            box-shadow: 0 0 12px #00ff66;
+            animation: pulse-online 2s infinite; /* Эффект живой пульсации */
+        }
+
+        /* Анимация волн для статуса "в сети" */
+        @keyframes pulse-online {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(0, 255, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 102, 0);
+            }
         }
 
         /* Текстовые блоки */
@@ -191,7 +205,7 @@
         
         <!-- Аватар -->
         <div class="avatar-wrapper">
-            <!-- Замените "avatar.jpg" на имя файла вашей аватарки в репозитории GitHub -->
+            <!-- Проверь, чтобы имя файла твоей картинки на гитхабе совпадало с тем, что в кавычках -->
             <img src="avatar.jpg" alt="dalin1xyz" class="avatar">
             <div class="status-dot"></div>
         </div>
@@ -208,7 +222,7 @@
 
         <!-- Ссылки на соцсети -->
         <div class="links-list">
-            <!-- Замените решетки # на ваши настоящие ссылки -->
+            <!-- Вместо решеток # вставь свои ссылки на профили -->
             <a href="#" target="_blank" class="btn btn-threads">Threads</a>
             <a href="#" target="_blank" class="btn btn-instagram">Instagram</a>
             <a href="#" target="_blank" class="btn btn-tiktok">TikTok</a>
