@@ -1,155 +1,181 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>dalin1xyz | Ссылки</title>
- <style>
- * {
- box-string: border-box;
- box-sizing: border-box;
- margin: 0;
- padding: 0;
- font-family: -apple-system, BlinkMacintoch, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
- }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dalin1xyz | Ссылки</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
- body {
- /* Эффект тумана: светлый центр, темные края */
- background-color: #1a1a1a;
- background: radial-gradient(circle, #4a4a4a 0%, #1a1a1a 100%);
- color: #ffffff;
- display: flex;
- flex-direction: column;
- align-items: center;
- justify-content: center;
- min-height: 100vh;
- padding: 20px;
- overflow: hidden;
- position: relative;
- }
+    body {
+      /* Лес в тумане на фоне */
+      background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.85)), 
+                  url('https://unsplash.com') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+      position: relative;
+    }
 
- /* Слой с бесконечными цитатами */
- .background-quotes {
- position: absolute;
- top: 0;
- left: 0;
- width: 100%;
- height: 100%;
- z-index: 0;
- overflow: hidden;
- pointer-events: none;
- opacity: 0.3;
- }
+    /* Контейнер для бесконечного вертикального скролла */
+    .background-quotes {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+      opacity: 0.12; /* Тусклый текст, чтобы не мешал читать ссылки */
+      display: flex;
+      flex-direction: column;
+    }
 
- .quote-layer {
- position: absolute;
- width: 400%;
- height: 400%;
- font-size: 18px;
- line-height: 1.8;
- color: #aaa;
- user-select: none;
- /* Анимация перемещения */
- animation: floatQuotes 40s linear infinite;
- padding: 50px;
- text-align: left;
- }
+    /* Блок с текстом: крутится снизу вверх */
+    .quote-track {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: scrollUp 45s linear infinite;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #aaa;
+      user-select: none;
+      padding: 10px;
+      width: 100%;
+      word-break: break-word;
+    }
 
- @keyframes floatQuotes {
- 0% { transform: translate(0, 0); }
- 100% { transform: translate(-25%, -25%); }
- }
+    /* Бесшовная анимация вверх на 50% высоты (так как контент дублируется) */
+    @keyframes scrollUp {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(-50%);
+      }
+    }
 
- .container {
- width: 100%;
- max-width: 480px;
- text-align: center;
- z-index: 2;
- }
+    /* Основной контейнер поверх всего */
+    .container {
+      width: 100%;
+      max-width: 480px;
+      text-align: center;
+      z-index: 2;
+      /* Эффект матового стекла поверх лесного фона */
+      background: rgba(10, 10, 10, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      padding: 40px 20px;
+      border-radius: 30px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
- .avatar {
- width: 96px;
- height: 96px;
- border-radius: 50%;
- background: linear-gradient(45deg, #333, #000);
- margin: 0 auto 20px;
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 32px;
- font-weight: bold;
- border: 1px solid rgba(255, 255, 255, 0.15);
- box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
- }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #222, #000);
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: bold;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
 
- h1 {
- font-size: 22px;
- margin-bottom: 8px;
- letter-spacing: 1px;
- color: #eee;
- }
+    h1 {
+      font-size: 22px;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      color: #eee;
+    }
 
- .description {
- font-size: 14px;
- color: #bbb;
- margin-bottom: 32px;
- line-height: 1.5;
- }
+    .description {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 32px;
+      line-height: 1.5;
+    }
 
- .links-container {
- display: flex;
- flex-direction: column;
- gap: 16px;
- }
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
 
- .link-card {
- display: block;
- background: rgba(255, 255, 255, 0.05);
- backdrop-filter: blur(8px);
- -webkit-backdrop-filter: blur(8px);
- color: #ccc;
- text-decoration: none;
- padding: 18px;
- border-radius: 14px;
- font-size: 15px;
- font-weight: 500;
- transition: all 0.4s ease;
- border: 1px solid rgba(255, 255, 255, 0.1);
- }
+    .link-card {
+      display: block;
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      color: #bbb;
+      text-decoration: none;
+      padding: 18px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.4s ease;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
 
- .link-card:hover {
- background: rgba(255, 255, 255, 0.12);
- color: #fff;
- transform: translateY(-3px);
- border-color: rgba(255, 255, 255, 0.25);
- }
+    .link-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      transform: translateY(-3px);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
 
- .instagram:hover { box-shadow: 0 10px 20px rgba(225, 48, 108, 0.15); }
- .tiktok:hover { box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15); }
- .threads:hover { box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
-
- </style>
+    /* Специфичные эффекты при наведении */
+    .instagram:hover { box-shadow: 0 10px 20px rgba(225, 48, 108, 0.15); }
+    .tiktok:hover { box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15); }
+    .threads:hover { box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1); }
+  </style>
 </head>
 <body>
 
- <div class="background-quotes">
- <div class="quote-layer">
- <!-- Текст продублирован для бесшовного зацикливания -->
- Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код... Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код...
- </div>
- </div>
+  <!-- Бесконечно бегущие вверх строчки без пустот -->
+  <div class="background-quotes">
+    <div class="quote-track">
+      <!-- Часть 1 -->
+      <p>Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код...</p>
+      <p>В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Пустота внутри... Время летит... Мы лишь тени...</p>
+      <p>Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... Неизбежность... Вне системы... Скрытый код... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда...</p>
+      
+      <!-- Часть 2 (Точный дубликат текста для эффекта бесшовной склейки) -->
+      <p>Пустота внутри... Время летит... Мы лишь тени... Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Скрытый код...</p>
+      <p>В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Пустота внутри... Время летит... Мы лишь тени...</p>
+      <p>Забытые сны... Тишина громче слов... Искать смысл... В темноте есть свет... Всё проходит... Оставь след... Сквозь шум... Неизбежность... Вне системы... Скрытый код... Иллюзия реальности... Тень прошлого... Шепот ветра... Безмолвие... Забытые мысли... Скрытая правда... Вне времени... Путь в никуда...</p>
+    </div>
+  </div>
 
- <div class="container">
- <div class="avatar">D</div>
- <h1>dalin1xyz</h1>
- <p class="description">Добро пожаловать в мой мир</p>
+  <div class="container">
+    <div class="avatar">D</div>
 
- <div class="links-container">
- <a href="https://instagram.com/dalin1xyz" class="link-card instagram" target="_blank">Instagram</a>
- <a href="https://tiktok.com/@dalin1xyz" class="link-card tiktok" target="_blank">TikTok</a>
- <a href="https://threads.net/@dalin1xyz" class="link-card threads" target="_blank">Threads</a>
- </div>
- </div>
+    <h1>@dalin1xyz</h1>
+
+    <p class="description">Добро пожаловать. Здесь собраны мои официальные каналы. Подписывайтесь, если готовы увидеть больше.</p>
+
+    <div class="links-container">
+      <a href="https://www.threads.com/@dalint1xyz" target="_blank" class="link-card threads">Threads</a>
+      <a href="https://www.instagram.com/dalin1xyz" target="_blank" class="link-card instagram">Instagram</a>
+      <a href="https://www.tiktok.com/dalin1xyz" target="_blank" class="link-card tiktok">TikTok</a>
+    </div>
+  </div>
 
 </body>
 </html>
