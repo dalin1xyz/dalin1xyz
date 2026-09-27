@@ -3,9 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
   <title>dalin1xyz | Ссылки</title>
   <style>
     * {
@@ -16,10 +13,13 @@
     }
 
     body {
-      /* Картинка туманного леса полностью зашифрована внутри этого кода. Она сработает абсолютно везде */
-      background: linear-gradient(rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0.9)), 
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://w3.org" width="800" height="600" viewBox="0 0 800 600"><radialGradient id="g" cx="50%" cy="40%" r="60%"><stop offset="0%" stop-color="%231a2922"/><stop offset="60%" stop-color="%230b1411"/><stop offset="100%" stop-color="%23030504"/></radialGradient><rect width="800" height="600" fill="url(%23g)"/><path d="M0 600 L80 420 L140 490 L260 360 L380 500 L490 390 L610 520 L720 410 L800 550 L800 600 Z" fill="%23040706" opacity="0.7"/><path d="M0 600 L120 460 L220 510 L340 400 L500 530 L600 440 L700 510 L800 420 L800 600 Z" fill="%23020403" opacity="0.9"/><circle cx="400" cy="240" r="180" fill="%23fff" opacity="0.015" filter="blur(20px)"/></svg>') no-repeat center center fixed;
-      background-size: cover;
+      /* Создаем мистический туман и лесную глубину кодом CSS без внешних картинок */
+      background-color: #030504;
+      background-image: 
+        linear-gradient(rgba(5, 5, 5, 0.85), rgba(5, 5, 5, 0.95)),
+        radial-gradient(circle at 50% 30%, #15241d 0%, #080d0b 50%, #030504 100%),
+        linear-gradient(90deg, transparent 40%, rgba(20,35,25,0.15) 50%, transparent 60%);
+      background-blend-mode: multiply, normal, screen;
       color: #ffffff;
       display: flex;
       flex-direction: column;
@@ -29,6 +29,20 @@
       padding: 20px;
       overflow: hidden;
       position: relative;
+    }
+
+    /* Генерация силуэтов леса на чистом CSS поверх фона */
+    body::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40vh;
+      background: linear-gradient(to top, #020403 20%, transparent 100%);
+      opacity: 0.8;
+      z-index: 1;
+      pointer-events: none;
     }
 
     /* Контейнер для фонового текста */
@@ -181,7 +195,6 @@
 
     <h1>@dalin1xyz</h1>
 
-    <!-- Блок описания -->
     <div class="description">
       <p>В мире, полном шума, я выбираю тишину и смыслы. Здесь нет лишних слов, только отражение того, что я создаю.</p>
       <p>Я верю, что эстетика — это не только то, что мы видим, но и то, что мы чувствуем. Исследую границы цифрового пространства, фиксируя моменты, которые обычно ускользают.</p>
