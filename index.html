@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>dalin1xyz | Мой сайт-визитка</title>
+  <title>dalin1xyz | Мой сайт визитка</title>
   <style>
     * {
       box-sizing: border-box;
@@ -113,6 +113,20 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
     }
 
+    /* Зеленый кружок статуса "В сети" */
+    .status-dot {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      width: 16px;
+      height: 16px;
+      background-color: #2ecc71; /* Сочный зеленый цвет */
+      border-radius: 50%;
+      border: 2px solid #040907; /* Темный контур, чтобы точка выделялась на фоне фото */
+      box-shadow: 0 0 12px rgba(46, 204, 113, 0.7); /* Мягкое неоновое свечение */
+      z-index: 3;
+    }
+
     h1 {
       font-size: 22px;
       margin-bottom: 12px;
@@ -189,9 +203,10 @@
   <!-- Контент страницы -->
   <div class="container">
     
-    <!-- Код аватарки с автоматическим перебором расширений (.jpg / .png / .PNG) -->
+    <!-- Аватарка вместе со светящимся кружком статуса -->
     <div class="avatar-wrapper">
       <img src="avatar.jpg" onerror="this.onerror=null; this.src='avatar.png'; this.setAttribute('onerror', 'this.onerror=null; this.src=\'avatar.PNG\'');" alt="Avatar" class="avatar">
+      <div class="status-dot"></div>
     </div>
 
     <h1>@dalin1xyz</h1>
@@ -203,9 +218,9 @@
     </div>
 
     <div class="links-container">
-      <a href="https://threads.com/@dalin1xyz" target="_blank" class="link-card threads">Threads</a>
-      <a href="https://instagram.com/@dalin1xyz" target="_blank" class="link-card instagram">Instagram</a>
-      <a href="https://tiktok.com/@dalin1xyz" target="_blank" class="link-card tiktok">TikTok</a>
+      <a href="https://threads.com" target="_blank" class="link-card threads">Threads</a>
+      <a href="https://instagram.com" target="_blank" class="link-card instagram">Instagram</a>
+      <a href="https://tiktok.com" target="_blank" class="link-card tiktok">TikTok</a>
     </div>
   </div>
 
