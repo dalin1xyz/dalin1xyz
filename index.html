@@ -15,6 +15,86 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     }
 
+    <!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Бесконечный движущийся текстовый фон</title>
+  <style>
+    /* Обнуляем отступы */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Прячем полосы прокрутки */
+      background-color: #111; /* Цвет фона страницы */
+      font-family: Arial, sans-serif;
+    }
+
+    /* Контейнер для движущегося текста */
+    .bg-text-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1; /* Отправляем на задний план */
+      display: flex;
+      align-items: center;
+      white-space: nowrap; /* Запрещаем перенос текста */
+    }
+
+    /* Сам движущийся текст */
+    .bg-text {
+      font-size: 12vw; /* Адаптивный размер текста */
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.05); /* Очень прозрачный цвет, чтобы не мешал контенту */
+      text-transform: uppercase;
+      
+      /* Подключаем анимацию: название, длительность, линейно, бесконечно */
+      animation: moveText 20s linear infinite; 
+    }
+
+    /* Ключевые точки анимации для бесконечного движения */
+    @keyframes moveText {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%); /* Сдвигаем ровно на половину дублированного текста */
+      }
+    }
+
+    /* Основной контент сайта (текст, кнопки и т.д.) */
+    .main-content {
+      position: relative;
+      z-index: 2; /* Отображается поверх фона */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ФОН: Важно, чтобы строка повторялась как минимум дважды внутри блока -->
+  <div class="bg-text-container">
+    <div class="bg-text">
+      DIGITAL BACKGROUND DIGITAL BACKGROUND&nbsp;
+    </div>
+  </div>
+
+  <!-- ОСНОВНОЙ КОНТЕНТ -->
+  <div class="main-content">
+    <h1>Ваш контент поверх движущегося текста</h1>
+  </div>
+
+</body>
+</html>
+
     body {
       /* Лесное туманное свечение */
       background-color: #040907;
