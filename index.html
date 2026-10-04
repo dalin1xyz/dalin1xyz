@@ -1,237 +1,221 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dalin1xyz | Fragment of Reality</title>
-    <style>
-        /* Базовые настройки страницы */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>dalin1xyz | Digital Fragment</title>
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+ <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+ <style>
+ / ОБЩИЕ СТИЛИ И ФОН С ТЕКСТУРОЙ /
+ body {
+ background-color: #0a0e0sel;
+ / Эффект зернистой бумаги/шума /
+ background-image:
+ radial-gradient(circle at 50% 50%, rgba(255,255,255,0.03) 0%, transparent 100%),
+ url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+ color: #ffffff;
+ font-family: 'Inter', -apple-system, sans-serif;
+ min-height: 100vh;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ overflow: hidden;
+ position: relative;
+ margin: 0;
+ }
 
-        body {
-            background-color: #0a0e0c;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Отключаем прокрутку самого браузера */
-            position: relative;
-        }
+ / 1. БЕЗУМНЫЙ БЕГУЩИЙ ТЕКСТ /
+ .background-ticker {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100%;
+ z-index: 1;
+ opacity: 0.07;
+ font-size: 14px;
+ line-height: 1.8;
+ letter-spacing: 1px;
+ user-select: none;
+ pointer-events: none;
+ overflow: hidden;
+ }
 
-        /* 1. БЕСКОНЕЧНЫЙ БЕГУЩИЙ ТЕКСТ НА ФОНЕ */
-        .background-ticker {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; /* Оставляем глубоко на заднем плане */
-            opacity: 0.06; /* Легкий, фоновый текст */
-            font-size: 14px;
-            line-height: 1.8;
-            letter-spacing: 1px;
-            word-wrap: break-word;
-            user-select: none;
-            pointer-events: none; /* Важно: клики проходят насквозь к кнопкам! */
-            overflow: hidden;
-        }
+ .ticker-content {
+ display: flex;
+ flex-direction: column;
+ animation: scrollUpInfinite 60s linear infinite;
+ }
 
-        /* Контейнер с анимацией бесконечного скролла вверх */
-        .ticker-content {
-            display: flex;
-            flex-direction: column;
-            animation: scrollUpInfinite 60s linear infinite; 
-        }
+ .ticker-block {
+ width: 100%;
+ padding: 10px;
+ }
 
-        .ticker-block {
-            width: 100%;
-            padding: 10px;
-        }
+ @keyframes scrollUpInfinite {
+ 0% { transform: translateY(0); }
+ 100% { transform: translateY(-50%); }
+ }
 
-        /* Бесшовное зацикливание текста */
-        @keyframes scrollUpInfinite {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-50%);
-            }
-        }
+ / 2. КАРТОЧКА (CONTAINER) /
+ .container {
+ position: relative;
+ z-index: 10;
+ width: 100%;
+ max-width: 400px;
+ padding: 40px 25px;
+ text-align: center;
+ / Эффект "вырезанной" карточки /
+ background: rgba(18, 24, 21, 0.6);
+ backdrop-filter: blur(10px);
+ border: 2px solid rgba(255, 255, 255, 0.1);
+ border-radius: 24px;
+ box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+ }
 
-        /* 2. ОСНОВНОЙ КОНТЕНТ (КАРТОЧКА) */
-        .container {
-            position: relative;
-            z-index: 10; /* Поднимаем карточку выше фона, чтобы кнопки работали */
-            width: 100%;
-            max-width: 580px;
-            padding: 40px 20px;
-            text-align: center;
-        }
+ / АВАТАР /
+ .avatar-wrapper {
+ position: relative;
+ width: 110px;
+ height: 110px;
+ margin: 0 auto 24px auto;
+ }
 
-        /* Аватарка с зеленым светящимся индикатором */
-        .avatar-wrapper {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 24px auto;
-        }
+ .avatar {
+ width: 100%;
+ height: 100%;
+ border-radius: 50%;
+ object-fit: cover;
+ border: 3px solid #1c2320;
+ box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+ }
 
-        .avatar {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-        }
+ .status-dot {
+ position: absolute;
+ bottom: 4px;
+ right: 4px;
+ width: 18px;
+ height: 18px;
+ background-color: #00ff66;
+ border-radius: 5/0;
+ border: 3.5px solid #0a0e0c;
+ box-shadow: 0 0 10px rgba(0, 255, 102, 0.8);
+ animation: pulse-online 2.5s infinite ease-in-out;
+ }
 
-        /* НАСТОЯЩИЙ ИНДИКАТОР "В СЕТИ" */
-        .status-dot {
-            position: absolute;
-            bottom: 4px;       
-            right: 4px;        
-            width: 18px;       
-            height: 18px;
-            background-color: #00ff66; 
-            border-radius: 50%;
-            border: 3.5px solid #0a0e0c; 
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.8); 
-            animation: pulse-online 2.5s infinite ease-in-out; 
-        }
+ @keyframes pulse-online {
+ 0%, 100% { transform: scale(1); box-shadow: 0 0 8px rgba(0, 255, 102, 0.6); }
+ 50% { transform: scale(1.1); box-shadow: 0 0 15px rgba(0, 255, 102, 0.9); }
+ }
 
-        /* Анимация пульсации зеленого индикатора "В сети" */
-        @keyframes pulse-online {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 8px 2px rgba(0, 255, 102, 0.6);
-            }
-            50% {
-                transform: scale(1.08); 
-                box-shadow: 0 0 16px 5px rgba(0, 255, 102, 0.9); 
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 8px 2px rgba(0, 255, 102, 0.6);
-            }
-        }
+ .username {
+ font-size: 26px;
+ font-weight: 700;
+ margin-bottom: 12px;
+letter-spacing: -0.5px;
+ }
 
-        /* Текстовые блоки */
-        .username {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
-        }
+ .description {
+ font-size: 14px;
+ color: #b0b0b0;
+ line-height: 1.6;
+ margin-bottom: 30px;
+ font-weight: 300;
+ }
 
-        .description {
-            font-size: 14px;
-            color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            font-weight: 300;
-        }
+ / 3. КОМИКСНЫЕ КНОПКИ /
+ .links-list {
+ display: flex;
+ flex-direction: column;
+ gap: 14px;
+ }
 
-        .description p {
-            margin-bottom: 12px;
-        }
+ .btn {
+ display: block;
+ padding: 16px;
+ text-decoration: none;
+ font-size: 15px;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 1px;
+ border-radius: 12px;
+ border: 3px solid #000; / Жирная обводка /
+ transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ position: relative;
+ background-color: #121815;
+ color: #ffffff;
+ / Жесткая тень (Comic style) /
+ box-shadow: 4px 4px 0px #000;
+ }
 
-        /* 3. КНОПКИ-ССЫЛКИ */
-        .links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            position: relative;
-            z-index: 20; /* Самый высокий приоритет для нажатий */
-        }
+ .btn:active {
+ transform: translate(2px, 2px);
+ box-shadow: 0px 0px 0px #000;
+ }
 
-        .btn {
-            display: block;
-            width: 100%;
-            padding: 16px;
-            background-color: #121815;
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 500;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
+ / Threads — Белая/Светлая /
+ .btn-threads:hover {
+ background-color: #ffffff;
+ color: #000;
+ border-color: #ffffff;
+ transform: translateY(-3px);
+ box-shadow: 6px 6px 0px #ffffff;
+ }
 
-        /* Эффекты подсветки при наведении */
-        /* Threads — Белая */
-        .btn-threads:hover {
-            background-color: #1c2320;
-            border-color: #ffffff;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-            transform: translateY(-2px);
-        }
+ / Instagram — Розовая /
+ .btn-instagram:hover {
+ background-color: #1c2320;
+ border-color: #e1306c;
+ color: #e1306c;
+ transform: translateY(-3px);
+ box-shadow: 6px 6px 0px #e1306c;
+ }
 
-        /* Instagram — Розовая */
-        .btn-instagram:hover {
-            background-color: #1c2320;
-            border-color: #e1306c;
-            box-shadow: 0 0 15px rgba(225, 48, 108, 0.5);
-            transform: translateY(-2px);
-        }
-
-        /* TikTok — Зеленая (Неоновая) */
-        .btn-tiktok:hover {
-            background-color: #1c2320;
-            border-color: #00ff66;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.5);
-            transform: translateY(-2px);
-        }
-    </style>
+ / TikTok — Зеленая /
+ .btn-tiktok:hover {
+ background-color: #1c2to0;
+ border-color: #00ff66;
+ color: #00ff66;
+ transform: translateY(-3px);
+ box-shadow: 6px 6px 0px #00ff66;
+ }
+ </style>
 </head>
 <body>
 
-    <!-- Задний фон: Идеально зацикленный бегущий текст -->
-    <div class="background-ticker">
-        <div class="ticker-content">
-            <div class="ticker-block">
-                Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум... Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум... Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум...
-            </div>
-            <div class="ticker-block">
-                Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум... Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум... Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум...
-            </div>
-        </div>
-    </div>
+<div class="background-ticker">
+ <div class="ticker-content">
+ <div class="ticker-block">
+ Пустота внутри... Время бежит... Мы лишь тени... Забытые сны... Тишина громче слов... В поисках истины... Одиночество в толпе... Память стирается... Не оглядывайся... Только вперед... Иллюзия реальности... Тень прошлого... Шаг в никуда... Бесконечность... Вспышка света... Путь в никуда... Тонкая грань... Эхо слов... Смысл потерян... Тьма сгущается... Вспышка надежды... Осколки памяти... Сквозь мглу... Неизбежность... Вне системы... Серый шум...
+</div>
+ </div>
+</div>
 
-    <!-- Основной блок визитки -->
-    <div class="container">
-        
-        <!-- Аватар -->
-        <div class="avatar-wrapper">
-            <img src="avatar.jpg" alt="dalin1xyz" class="avatar">
-            <div class="status-dot"></div>
-        </div>
+<div class="container">
+ <div class="avatar-wrapper">
+ <img src="avatar.jpg" alt="dalin1xyz" class="avatar">
+ <div class="status-dot"></div>
+ </div>
 
-        <!-- Никнейм -->
-        <div class="username">dalin1xyz</div>
+ <div class="username">dalin1xyz</div>
 
-        <!-- Текст-описание -->
-        <div class="description">
-            <p>В мире, полном шума, я выбираю тишину и смыслы. Здесь нет лишних слов, только отражение того, что я создаю.</p>
-            <p>Я верю, что aesthetic — это не только то, что мы видим, но и то, что мы чувствуем. Исследую границы цифрового пространства, фиксируя моменты, которые обычно ускользают.</p>
-            <p>Добро пожаловать в мой фрагмент реальности.</p>
-        </div>
+ <div class="description">
+ <p>В мире, полном шума, я выбираю тишину и смыслы. Здесь нет лишних слов, только отражение того, что я создаю.</p>
+ <p>Я верю, <br>что aesthetic — это не только то, что мы видим, но и то, что мы чувствуем.</p>
+ </div>
 
-        <!-- Ссылки на соцсети -->
-        <div class="links-list">
-            <!-- ВНИМАНИЕ: Замени хвостики ПОСЛЕ слэша на свои реальные никнеймы -->
-            <a href="https://threads.com/@dalin1xyz" target="_blank" class="btn btn-threads">Threads</a>
-            <a href="https://instagram.com/@dalin1xyz" target="_blank" class="btn btn-instagram">Instagram</a>
-            <a href="https://tiktok.com/dalin1xyz" target="_blank" class="btn btn-tiktok">TikTok</a>
-        </div>
-
-    </div>
+ <div class="links-list">
+ <a href="#" class="btn btn-threads">Threads</a>
+ <a href="#" class="btn btn-instagram">Instagram</a>
+ <a href="#" class="btn btn-tiktok">TikTok</a>
+ </div>
+</div>
 
 </body>
 </html>
+
+
+ 
+     
